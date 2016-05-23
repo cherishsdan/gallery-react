@@ -1,7 +1,8 @@
 require('normalize.css/normalize.css');
 require('styles/App.css');
-
-import React from 'react';
+var imgagePartUrl = 'http://o6qp6st9j.bkt.clouddn.com/images/gallery';
+var React = require('react');
+/*import ReactDOM from 'react-dom';*/
 var ReactDOM = require('react-dom');
 let imageDatas = require('../data/imageData.json');
 
@@ -10,7 +11,7 @@ imageDatas = (function genImageURL(imageDatasArr) {
     for (var i = 0, j = imageDatasArr.length; i < j; i++) {
         var singleImageData = imageDatasArr[i];
 
-        singleImageData.imageURL = require('../images/' + singleImageData.fileName);
+        singleImageData.imageURL = imgagePartUrl + singleImageData.fileName;
 
         imageDatasArr[i] = singleImageData;
     }
@@ -107,15 +108,15 @@ var ControllerUnit = React.createClass({
         e.stopPropagation();
     },
     render: function () {
-        var controlelrUnitClassName = "controller-unit";
+        var controlelrUnitClassName = 'controller-unit';
 
         // 如果对应的是居中的图片，显示控制按钮的居中态
         if (this.props.arrange.isCenter) {
-            controlelrUnitClassName += " is-center";
+            controlelrUnitClassName += ' is-center';
 
             // 如果同时对应的是翻转图片， 显示控制按钮的翻转态
             if (this.props.arrange.isInverse) {
-                controlelrUnitClassName += " is-inverse";
+                controlelrUnitClassName += 'is-inverse';
             }
         }
 
